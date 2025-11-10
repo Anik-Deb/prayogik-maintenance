@@ -371,7 +371,7 @@
       <!-- Status indicator -->
       <div class="status">
         <div class="pulse-dot"></div>
-        <span class="status-text">Expected back in 24 hours</span>
+        <span class="status-text">Expected back in soon</span>
       </div>
 
       <!-- Progress bar -->
@@ -385,10 +385,26 @@
       <!-- Contact section -->
       <div class="contact-section">
         <p class="contact-text">Questions? Reach out to us</p>
-        <a href="mailto:contact@prayogik.com" class="contact-button"
-          >Contact Support</a
+        <!-- remove the script and use plain anchor -->
+        <a
+          id="contactButton"
+          href="mailto:contact@prayogik.com"
+          class="contact-button"
         >
+          contact@prayogik.com
+        </a>
       </div>
     </div>
+
+    <script>
+      document
+        .getElementById("contactButton")
+        .addEventListener("click", function (e) {
+          console.log("contact button clicked");
+          // comment out preventDefault while debugging
+          // e.preventDefault();
+          window.location.href = "mailto:contact@prayogik.com";
+        });
+    </script>
   </body>
 </html>
