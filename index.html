@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayogik - Maintenance</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #f0fdfa 0%,
+          #f8f9fa 50%,
+          #e0f2f1 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        color: #1f2937;
+        overflow: hidden;
+        position: relative;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-img {
+        height: 80px; /* Adjust as needed */
+        width: auto;
+      }
+      /* Animated background blobs */
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+      }
+
+      .blob-1 {
+        width: 300px;
+        height: 300px;
+        background: #14b8a6;
+        top: 5%;
+        left: 10%;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .blob-2 {
+        width: 350px;
+        height: 350px;
+        background: #0d9488;
+        bottom: 10%;
+        right: 5%;
+        animation: float 10s ease-in-out infinite 1s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        50% {
+          transform: translateY(-30px) translateX(20px);
+        }
+      }
+
+      /* Main container */
+      .container {
+        position: relative;
+        z-index: 10;
+        max-width: 800px;
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Logo */
+      .logo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 2rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        font-weight: bold;
+        color: white;
+        animation: bounce 3s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Heading */
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .highlight {
+        background: linear-gradient(135deg, #0d9488 0%, #0d9488 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Description */
+      .description {
+        font-size: 1.1rem;
+        color: #475569;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      /* Status indicator */
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(20, 184, 166, 0.1);
+        border: 1px solid rgba(20, 184, 166, 0.2);
+      }
+
+      .pulse-dot {
+        width: 10px;
+        height: 10px;
+        background: #14b8a6;
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .status-text {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #475569;
+      }
+
+      /* Progress bar */
+      .progress-section {
+        margin-bottom: 2rem;
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: #e2e8f0;
+        border-radius: 9999px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #26d0ce 0%, #14b8a6 100%);
+        border-radius: 9999px;
+        animation: slide 2s ease-in-out infinite;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .progress-text {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        font-weight: 500;
+      }
+
+      /* Features grid */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(20, 184, 166, 0.08);
+        border: 1px solid rgba(20, 184, 166, 0.15);
+        transition: all 0.3s ease;
+        animation: scaleIn 0.6s ease-out both;
+      }
+
+      .feature-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .feature-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .feature-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(20, 184, 166, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature-title {
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 0.25rem;
+      }
+
+      .feature-desc {
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+
+      /* Contact section */
+      .contact-section {
+        margin-top: 2rem;
+      }
+
+      .contact-text {
+        font-size: 0.95rem;
+        color: #64748b;
+        margin-bottom: 1rem;
+      }
+
+      .contact-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        color: white;
+        padding: 0.875rem 2rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(20, 184, 166, 0.3);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .contact-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(20, 184, 166, 0.4);
+      }
+
+      .contact-button:active {
+        transform: translateY(-1px);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .description {
+          font-size: 1rem;
+        }
+
+        .logo {
+          width: 100px;
+          height: 100px;
+          font-size: 3rem;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Main content -->
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img
+          src="/prayogik-nav-logo.svg"
+          alt="Prayogik Logo"
+          class="logo-img"
+        />
+      </div>
+
+      <!-- Heading -->
+      <h1>Under <span class="highlight">Maintenance</span></h1>
+
+      <!-- Description -->
+      <p class="description">
+        We're working hard to improve your experience. Our team is making some
+        exciting enhancements and will be back soon!
+      </p>
+
+      <!-- Status indicator -->
+      <div class="status">
+        <div class="pulse-dot"></div>
+        <span class="status-text">Expected back in 24 hours</span>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-section">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <p class="progress-text">Making things better...</p>
+      </div>
+
+      <!-- Contact section -->
+      <div class="contact-section">
+        <p class="contact-text">Questions? Reach out to us</p>
+        <a href="mailto:contact@prayogik.com" class="contact-button"
+          >Contact Support</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
